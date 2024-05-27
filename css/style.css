@@ -68,6 +68,11 @@ header .logo{
 header .logo span{
     color: var(--pink);
 }
+header .navbar {
+    display: flex; /* Show navbar by default on large screens */
+    flex-direction: row;
+    align-items: center;
+}
 header .navbar a{
     font-size: 2rem;
     padding: 0 1.5rem;
@@ -84,8 +89,8 @@ header .icons a{
 header .icons a:hover{
     color: var(--pink);
 }
-header #toggler:checked ~ .navbar {
-    display: block;
+header #toggler {
+    display: none; /* Hide the checkbox */
 }
 header .fa-bars{
     font-size: 3rem;
@@ -94,14 +99,14 @@ header .fa-bars{
     padding: .5rem 1.5rem;
     cursor: pointer;
     border: .1rem solid rgba(0, 0, 0, .3);
-    display: none;
+    display: none;/* Hide bars icon by default */
 }
 
 .home{
     display: flex;
     align-items: center;
     min-height: 100vh;
-    background: url(../images/PinkTulips.jpg) no-repeat;
+    background: url(../images/Pinkflower.jpg) no-repeat;
     background-size: cover;
     background-position: center;
 }
@@ -458,41 +463,54 @@ header .fa-bars{
 }
 @media (max-width:768px){
     header .fa-bars{
-        display: block;
+        display: block;/* Show bars icon on small screens */
     }
-    header .navbar{
+    header .navbar {
+        display: none; /* Hide navbar on small screens */
+        flex-direction: column;
         position: absolute;
-        top: 100; left: 0; right: 0;
-        background: #eee;
-        border-top: .1rem solid rgba(0, 0, 0, .1);
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    }
-
-    header #toggler:checked .navbar{
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    }
-
-    header .navbar a{
-        margin: 1.5rem;
-        padding: 1.5rem;
+        top: 100%; /* Move navbar below header */
+        left: 0;
+        right: 0;
         background: #fff;
-        border: 1rem solid rgba(0, 0, 0, .1);
-        display: block;
+        border-top: .1rem solid rgba(0, 0, 0, .1);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.3s ease-in-out;
+    }
+
+    header #toggler:checked ~ .navbar {
+        display: flex; /* Show navbar when toggler is checked */
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    header .navbar a {
+        margin: 0;
+        padding: 1.2rem 2rem;
+        font-size: 1.8rem;
+        color: #666;
+        border-bottom: 0.1rem solid rgba(0, 0, 0, .1);
+        background: none;
+    }
+
+    header .navbar a:hover {
+        background: var(--pink);
+        color: #fff;
     }
 
     .home .content h3{
-        font-size: 5rem;
+        font-size: 4rem;
     }
     .home .content span{
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     .icons-container .icons h3{
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .icons-container .icons span{
-        font-size: 1.7rem;
+        font-size: 1.5rem;
     } 
 }
 @media (max-width:450px) {

@@ -340,7 +340,7 @@
         </div>
 
     </section>
-    <!--content section ends here-->
+    <!--contact section ends here-->
 
     <!--footer section starts here-->
     <section class="footer">
@@ -375,6 +375,21 @@
 
     </section>
     <!--footer section ends here-->
+
+    <!-- JavaScript to handle menu toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggler = document.getElementById('toggler');
+            const navbar = document.querySelector('.navbar');
+            const navbarLinks = document.querySelectorAll('.navbar a');
+
+            navbarLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    toggler.checked = false;
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
